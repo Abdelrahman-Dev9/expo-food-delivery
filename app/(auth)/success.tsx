@@ -33,7 +33,7 @@ const Success = () => {
           <Button
             title="Go to Homepage"
             color="white"
-            onPress={() => router.push("/")}
+            onPress={() => router.push("/(tabs)/home")}
           />
         </TouchableOpacity>
       </View>
