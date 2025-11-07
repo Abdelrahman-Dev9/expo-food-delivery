@@ -1,7 +1,9 @@
+import { useRouter } from "expo-router";
 import React from "react";
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const Login = () => {
+  const router = useRouter();
   return (
     <>
       <View>
@@ -21,8 +23,12 @@ const Login = () => {
         </View>
       </View>
       {/* Login Button */}
-      <TouchableOpacity className=" bg-[#FE8C00] rounded-full mt-10 ">
-        <Button title="Login" color="white" />
+      <TouchableOpacity className=" bg-[#FE8C00] rounded-full mt-10">
+        <Button
+          title="Login"
+          color="white"
+          onPress={() => router.push("/(auth)/success")}
+        />
       </TouchableOpacity>
       {/* Footer */}
       <View className="flex-row justify-center mt-8 font-bold">
