@@ -1,14 +1,23 @@
 import CartItemCard from "@/Components/CartItemCard";
 import { useRouter } from "expo-router";
 import React from "react";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Platform,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Cart = () => {
   const router = useRouter();
 
   return (
-    <SafeAreaView className="mx-5 h-[92%]">
+    <SafeAreaView
+      className={`mx-5 ${Platform.OS === "ios" ? "h-[94%]" : "h-[92%]"}`}
+    >
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* 🔹 Header Section */}
         <View className="flex-row justify-between">
