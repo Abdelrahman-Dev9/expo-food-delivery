@@ -1,3 +1,4 @@
+import EmptyState from "@/Components/EmptyState";
 import ProductCard from "@/Components/ProductCard";
 import React, { useState } from "react";
 import {
@@ -12,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const Search = () => {
   const [selected, setSelected] = useState("All");
+  const [search, setSearch] = useState(false);
   const items = ["All", "Burgers", "Pizza", "Burrito", "Chechen"];
 
   return (
@@ -57,75 +59,81 @@ const Search = () => {
         </View>
 
         {/* Categories */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          className="mt-5"
-          contentContainerStyle={{ paddingRight: 20 }}
-        >
-          {items.map((item) => (
-            <TouchableOpacity
-              key={item}
-              onPress={() => setSelected(item)}
-              className={`mr-2 py-3 px-6 rounded-full border ${
-                selected === item
-                  ? "bg-orange-500 border-orange-500"
-                  : "bg-white border-gray-300"
-              }`}
-            >
-              <Text
-                className={`font-semibold ${
-                  selected === item ? "text-white" : "text-gray-600"
+        {search && (
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            className="mt-5"
+            contentContainerStyle={{ paddingRight: 20 }}
+          >
+            {items.map((item) => (
+              <TouchableOpacity
+                key={item}
+                onPress={() => setSelected(item)}
+                className={`mr-2 py-3 px-6 rounded-full border ${
+                  selected === item
+                    ? "bg-orange-500 border-orange-500"
+                    : "bg-white border-gray-300"
                 }`}
               >
-                {item}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+                <Text
+                  className={`font-semibold ${
+                    selected === item ? "text-white" : "text-gray-600"
+                  }`}
+                >
+                  {item}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        )}
       </View>
 
       {/* Product Grid */}
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View className="flex-row justify-around mx-5">
-          <View className="gap-5 mt-[20px]">
-            <ProductCard
-              productImage={require("@/assets/images/image 6.png")}
-              title="Veggie Burger"
-              price="From $10.4"
-            />
-            <ProductCard
-              productImage={require("@/assets/images/top-view-delicious-pizza 1.png")}
-              title="Margherita Magic"
-              price="From $10.4"
-            />
-            <ProductCard
-              productImage={require("@/assets/images/image.png")}
-              title="Chicken Wrap"
-              price="From $10.4"
-            />
-          </View>
-          <View className="gap-5 mt-[80px] ">
-            <ProductCard
-              productImage={require("@/assets/images/image 5.png")}
-              title="Veggie Burger"
-              price="From $10.4"
-            />
-            <ProductCard
-              productImage={require("@/assets/images/delicious-chicken-pizza-slices-hot-savory-meal 1.png")}
-              title="Veggie Delight"
-              price="From $10.4"
-            />
+      {search ? (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View className="flex-row justify-around mx-5">
+            <View className="gap-5 mt-[20px]">
+              <ProductCard
+                productImage={require("@/assets/images/image 6.png")}
+                title="Veggie Burger"
+                price="From $10.4"
+              />
+              <ProductCard
+                productImage={require("@/assets/images/top-view-delicious-pizza 1.png")}
+                title="Margherita Magic"
+                price="From $10.4"
+              />
+              <ProductCard
+                productImage={require("@/assets/images/image.png")}
+                title="Chicken Wrap"
+                price="From $10.4"
+              />
+            </View>
+            <View className="gap-5 mt-[80px] ">
+              <ProductCard
+                productImage={require("@/assets/images/image 5.png")}
+                title="Veggie Burger"
+                price="From $10.4"
+              />
+              <ProductCard
+                productImage={require("@/assets/images/delicious-chicken-pizza-slices-hot-savory-meal 1.png")}
+                title="Veggie Delight"
+                price="From $10.4"
+              />
 
-            <ProductCard
-              productImage={require("@/assets/images/image (1).png")}
-              title="Veggie Delight"
-              price="From $10.4"
-            />
+              <ProductCard
+                productImage={require("@/assets/images/image (1).png")}
+                title="Veggie Delight"
+                price="From $10.4"
+              />
+            </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      ) : (
+        <EmptyState />
+      )}
     </SafeAreaView>
   );
 };
