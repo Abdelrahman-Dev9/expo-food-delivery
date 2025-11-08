@@ -53,7 +53,7 @@ const Search = () => {
           />
           <TouchableOpacity
             onPress={() => {
-              setSearch(false);
+              setSearch(!selected);
             }}
           >
             <Image
@@ -103,16 +103,19 @@ const Search = () => {
           <View className="flex-row justify-around mx-5">
             <View className="gap-5 mt-[20px]">
               <ProductCard
+                id="1"
                 productImage={require("@/assets/images/image 6.png")}
                 title="Veggie Burger"
                 price="From $10.4"
               />
               <ProductCard
+                id="2"
                 productImage={require("@/assets/images/top-view-delicious-pizza 1.png")}
                 title="Margherita Magic"
                 price="From $10.4"
               />
               <ProductCard
+                id="3"
                 productImage={require("@/assets/images/image.png")}
                 title="Chicken Wrap"
                 price="From $10.4"
@@ -120,17 +123,20 @@ const Search = () => {
             </View>
             <View className="gap-5 mt-[80px] ">
               <ProductCard
+                id="4"
                 productImage={require("@/assets/images/image 5.png")}
                 title="Veggie Burger"
                 price="From $10.4"
               />
               <ProductCard
+                id="5"
                 productImage={require("@/assets/images/delicious-chicken-pizza-slices-hot-savory-meal 1.png")}
                 title="Veggie Delight"
                 price="From $10.4"
               />
 
               <ProductCard
+                id="6"
                 productImage={require("@/assets/images/image (1).png")}
                 title="Veggie Delight"
                 price="From $10.4"
