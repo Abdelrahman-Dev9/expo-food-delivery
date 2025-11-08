@@ -13,7 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const Search = () => {
   const [selected, setSelected] = useState("All");
-  const [search, setSearch] = useState(false);
+  const [search, setSearch] = useState(true);
   const items = ["All", "Burgers", "Pizza", "Burrito", "Chechen"];
 
   return (
@@ -51,11 +51,18 @@ const Search = () => {
             accessibilityLabel="Search for food"
             returnKeyType="search"
           />
-          <Image
-            source={require("@/assets/icons/search.png")}
-            className="w-5 h-5 ml-2"
-            resizeMode="contain"
-          />
+          <TouchableOpacity
+            onPress={() => {
+              setSearch(false);
+            }}
+          >
+            <Image
+              source={require("@/assets/icons/search.png")}
+              className="ml-2 w-7 h-7"
+              resizeMode="contain"
+              accessibilityLabel="Search for food"
+            />
+          </TouchableOpacity>
         </View>
 
         {/* Categories */}
